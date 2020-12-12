@@ -9,6 +9,94 @@
 
 
 
+/* 
+* FUNCTION    : getUserInput()
+* DESCRIPTION :
+*       This function takes the ID of the element the user entered a value into and converts it to a string.
+* PARAMETERS  :
+*      object : textboxElement (The object automatically created from the ID that records user's input)
+* RETURNS     : 
+*      string : userInput (User's input to the element as a string)
+* REFERENCE  :
+*       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
+*/
+function getUserInput(elementId) {
+    var userInput = elementId.value.toString();
+    return userInput;
+}
+
+/* 
+* FUNCTION    : checkIfEmpty()
+* DESCRIPTION :
+*       This function checks if the text box is empty
+* PARAMETERS  :
+*      string : userInput (The user's input as a string)
+* RETURNS     : 
+*      bool   : true if the string is empty after trimming whitespace
+*      bool   : false if the string contains a value after trimming whitespace
+* REFERENCE  :
+*       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
+*/
+function checkIfEmpty(userInput) {
+    //Trim whitespace and check if length is 0
+    if ((userInput.trim()).length < 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+/* 
+* FUNCTION    : validateNameFormat()
+* DESCRIPTION :
+*       This method checks the user entered name in the text box to the regex pattern to see if the correct format was followed.
+* PARAMETERS  :
+*       string : userInput ()
+* RETURNS     : 
+*       bool : hasMatch (true if the user entered string matches the regex pattern for a name)
+*                       (false if the user entered string does not match the regex pattern for a name)
+* REFERENCE  :
+*       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
+*/
+function validateNameFormat(userInput) {
+    //var namePattern = /^[a-z\s']+$/i;
+    //var hasMatch = namePattern.test(userInput);
+    //return hasMatch;
+}
+
+/* 
+* FUNCTION    : validateFileName()
+* DESCRIPTION :
+*       This function will validate the file name in the save as text box before proceeding
+* PARAMETERS  :
+*      void : void
+* RETURNS     : 
+*      bool   : true if the string is empty after trimming whitespace
+*      bool   : false if the string contains a value after trimming whitespace
+* REFERENCE  :
+*       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
+*/
+function validateFileName() {
+    //Get the input saveAsBox, convert it to a string and check for valid format
+    var input = getUserInput(document.getElementById("saveAsBox"));
+    var isEmpty = checkIfEmpty(input);
+    var isNameValid = validateNameFormat(input);
+
+    //If the name textbox is empty then enter here and display an error to the user
+    if (isEmpty == true)
+    {
+        document.getElementById("saveAsBox").value = "";
+        document.getElementById("saveAsBox").innerHTML = "<b>Error:</b> File Name Cannot be Blank.";
+    }
+    //Otherwise enter here and check if the user's name is valid format
+    else if (isNameValid == false)
+    {
+        document.getElementById("saveAsBox").value = "";
+        document.getElementById("saveAsBox").innerHTML = "<b>Error:</b> File Name is not Valid.";
+    }
+}
+
 /*
 * FUNCTION    : populateDropdown()
 * DESCRIPTION :
@@ -25,9 +113,6 @@ function populateDropdown(data)
     {
         addNewListOption(data.d[i]);
     }
-
-    //data.d.forEach();
-    //data.forEach(addNewListOption);
 }
 
 /*
@@ -44,6 +129,11 @@ function addNewListOption(fileName)
 {
     var select = document.getElementById("myFiles");
     select.options[select.options.length] = new Option(fileName, fileName);
+}
+
+function updateFileList()
+{
+    //Get file list
 }
 
 /*

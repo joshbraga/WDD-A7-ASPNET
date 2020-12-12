@@ -160,6 +160,7 @@ body
     */
     .navigationBar select 
     {
+        width: 200px;
         float: left;
         font-size: 20px;
         color: white;
