@@ -33,7 +33,7 @@ DESCRIPTION   :
                 <!-- The navigation menu -->
                 <div class="navigationBar">
                     <p class="navigationBarText">SETeditor</p>
-                    <button type="button" onclick="updateFileList">New</button>
+                    <button type="button" onclick="newFile()">New</button>
 
                     <!-- The drop down menu for My Files -->
                     <select name="Open" id="myFiles" onchange="getFiles()" onclick="getFiles()">

@@ -55,6 +55,7 @@ body
     margin-left: 5px;
     padding: 8px 0 5px 0;
     padding: 8px 0 5px 0;
+    float: left;
 }
 
 /* 
@@ -88,9 +89,9 @@ body
 */
 .errorText 
 {
-    margin-right: 1070px;
+    margin-left: 10px;
     margin-top: 25px;
-    float: right;
+    float: left;
     font-size: 16px;
     color: red;
     text-align: left;

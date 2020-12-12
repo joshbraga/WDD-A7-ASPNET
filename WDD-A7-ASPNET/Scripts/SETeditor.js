@@ -10,8 +10,6 @@
 
 
 //global
-
-
 var jQueryXMLHttpRequest; 
 
 
@@ -27,7 +25,8 @@ var jQueryXMLHttpRequest;
 * REFERENCE  :
 *       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
 */
-function getUserInput(elementId) {
+function getUserInput(elementId)
+{
     var userInput = elementId.value.toString();
     return userInput;
 }
@@ -44,9 +43,11 @@ function getUserInput(elementId) {
 * REFERENCE  :
 *       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
 */
-function checkIfEmpty(userInput) {
+function checkIfEmpty(userInput)
+{
     //Trim whitespace and check if length is 0
-    if ((userInput.trim()).length < 1) {
+    if ((userInput.trim()).length < 1)
+    {
         return true;
     }
     else {
@@ -66,10 +67,11 @@ function checkIfEmpty(userInput) {
 * REFERENCE  :
 *       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
 */
-function validateNameFormat(userInput) {
-    //var namePattern = /^[a-z\s']+$/i;
-    //var hasMatch = namePattern.test(userInput);
-    //return hasMatch;
+function validateNameFormat(userInput)
+{
+    var namePattern = /^[a-zA-Z0-9\s\!\@\#\$\%\^\&\(\)\-\_\+\=\'\;\`\~\.\,\[\]\{\}]+$/i;
+    var hasMatch = namePattern.test(userInput);
+    return hasMatch;
 }
 
 /* 
@@ -84,23 +86,29 @@ function validateNameFormat(userInput) {
 * REFERENCE  :
 *       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
 */
-function validateFileName() {
+function validateFileName()
+{
+    //Clear Error text
+    document.getElementById("saveAsError").innerHTML = "";
+
     //Get the input saveAsBox, convert it to a string and check for valid format
     var input = getUserInput(document.getElementById("saveAsBox"));
     var isEmpty = checkIfEmpty(input);
     var isNameValid = validateNameFormat(input);
 
     //If the name textbox is empty then enter here and display an error to the user
-    if (isEmpty == true)
-    {
+    if (isEmpty == true) {
         document.getElementById("saveAsBox").value = "";
-        document.getElementById("saveAsBox").innerHTML = "<b>Error:</b> File Name Cannot be Blank.";
+        document.getElementById("saveAsError").innerHTML = "<b>Error:</b> File Name Cannot be Blank.";
     }
     //Otherwise enter here and check if the user's name is valid format
-    else if (isNameValid == false)
-    {
+    else if (isNameValid == false) {
         document.getElementById("saveAsBox").value = "";
-        document.getElementById("saveAsBox").innerHTML = "<b>Error:</b> File Name is not Valid.";
+        document.getElementById("saveAsError").innerHTML = '<b>Error:</b> Invalid File Name. File Name Cannot Contain Special Characters [<>:"/\|?*].';
+    }
+    else
+    {
+        //Call to create new file with that name
     }
 }
 
@@ -140,11 +148,6 @@ function addNewListOption(fileName)
     select.options[select.options.length] = new Option(fileName, fileName);
 }
 
-function updateFileList()
-{
-    //Get file list
-}
-
 /*
 * FUNCTION    : getFiles()
 * DESCRIPTION :
@@ -175,14 +178,11 @@ function getFiles()
 
 }
 
-
-
-
-
-
-
-function testArray()
+function saveFile()
 {
-    var filesArray = ["apple", "orange", "cherry"];
-    populateDropDown(filesArray);
+
+}
+
+function newFile() {
+
 }
