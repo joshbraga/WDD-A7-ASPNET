@@ -38,8 +38,8 @@ function getUserInput(elementId)
 * PARAMETERS  :
 *      string : userInput (The user's input as a string)
 * RETURNS     : 
-*      bool   : true if the string is empty after trimming whitespace
-*      bool   : false if the string contains a value after trimming whitespace
+*      bool   : true (if the string is empty after trimming whitespace)
+*      bool   : false (if the string contains a value after trimming whitespace)
 * REFERENCE  :
 *       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
 */
@@ -50,7 +50,8 @@ function checkIfEmpty(userInput)
     {
         return true;
     }
-    else {
+    else
+    {
         return false;
     }
 }
@@ -63,7 +64,7 @@ function checkIfEmpty(userInput)
 *       string : userInput ()
 * RETURNS     : 
 *       bool : hasMatch (true if the user entered string matches the regex pattern for a name)
-*                       (false if the user entered string does not match the regex pattern for a name)
+*       bool : hasMatch (false if the user entered string does not match the regex pattern for a name)
 * REFERENCE  :
 *       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
 */
@@ -81,8 +82,7 @@ function validateNameFormat(userInput)
 * PARAMETERS  :
 *      void : void
 * RETURNS     : 
-*      bool   : true if the string is empty after trimming whitespace
-*      bool   : false if the string contains a value after trimming whitespace
+*      void : void
 * REFERENCE  :
 *       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
 */
@@ -97,12 +97,14 @@ function validateFileName()
     var isNameValid = validateNameFormat(input);
 
     //If the name textbox is empty then enter here and display an error to the user
-    if (isEmpty == true) {
+    if (isEmpty == true)
+    {
         document.getElementById("saveAsBox").value = "";
         document.getElementById("saveAsError").innerHTML = "<b>Error:</b> File Name Cannot be Blank.";
     }
     //Otherwise enter here and check if the user's name is valid format
-    else if (isNameValid == false) {
+    else if (isNameValid == false)
+    {
         document.getElementById("saveAsBox").value = "";
         document.getElementById("saveAsError").innerHTML = '<b>Error:</b> Invalid File Name. File Name Cannot Contain Special Characters [<>:"/\|?*].';
     }
@@ -149,9 +151,26 @@ function addNewListOption(fileName)
 }
 
 /*
+* FUNCTION    : setFileNameBar()
+* DESCRIPTION :
+*        This function changes the file name label on the file name bar above the text area to
+ *       the current file being worked on.
+* PARAMETERS  :
+*      string : fileName (String of the filename)
+* RETURNS     :
+*      void: void
+*/
+function setFileNameBar(fileName)
+{
+    document.getElementById("fileNameMessage").innerHTML = "File Name: " + fileName;
+}
+
+/*
 * FUNCTION    : getFiles()
 * DESCRIPTION :
-*       This function
+*        This function gets a list of files from the MyFiles directory and calls the
+ *       populateDropDown function in order to add new file names to the drop down
+ *       menu on the navigatio bar
 * PARAMETERS  :
 *      void : void
 * RETURNS     :
@@ -179,7 +198,8 @@ function getFiles()
 }
 
 
-function saveFile() {
+function saveFile()
+{
 
     var textboxData = "";
 
@@ -207,8 +227,9 @@ function saveFile() {
 
 
 
-}
 
-function newFile() {
+
+function newFile()
+{
 
 }
