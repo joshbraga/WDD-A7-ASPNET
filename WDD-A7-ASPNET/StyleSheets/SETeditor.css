@@ -3,7 +3,8 @@
 * PROJECT          : WDD-A7-ASPNET
 * PROGRAMMER       : Josh Braga 5895818 and Balazs Karner 8646201
 * FIRST VERSION    : 2020-12-10
-* DESCRIPTION      : This file contains all the styles for the online text editor
+* DESCRIPTION      : 
+*       This file contains all the styles for the online text editor.
 */
 
 body 
@@ -12,7 +13,7 @@ body
     background-color: #3b4048;
 }
 
-textarea 
+.textbox 
 {
     border: none;
     outline: none;
@@ -27,6 +28,27 @@ textarea
     width: 1000px;
     font-size: 18px;
     display: block;
+}
+
+.saveAsBox {
+    font-family: Arial;
+    font-size: 16px;
+    width: 210px;
+    color: #fff;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid White;
+    outline: none;
+    margin-top: 15px;
+    margin-left: 5px;
+    padding: 8px 0 5px 0;
+    padding: 8px 0 5px 0;
+}
+
+.statusBar {
+    font-family: Arial;
+    font-size: 16px;
+    color: red;
 }
 
 /* 
@@ -72,24 +94,59 @@ textarea
             background-color: #e78200;
         }
 
-/* 
+    /* Navigation links */
+    .navigationBar select {
+        float: left;
+        font-size: 20px;
+        color: white;
+        text-align: center;
+        padding: 20px 16px 20px 16px;
+        text-decoration: none;
+        background-color: #333;
+        border: none;
+        outline: none;
+    }
+
+        /* Add a red background color to navigation links on hover */
+        .navigationBar select:hover {
+            background-color: #e78200;
+        }
+
+    /* Navigation links */
+    .navigationBar DropDownList {
+        float: left;
+        font-size: 20px;
+        color: white;
+        text-align: center;
+        padding: 20px 16px 20px 16px;
+        text-decoration: none;
+        background-color: #333;
+        border: none;
+        outline: none;
+    }
+
+        /* Add a red background color to navigation links on hover */
+        .navigationBar DropDownList:hover {
+            background-color: #e78200;
+        }
+
+    /* 
 *   REFERENCE: 
 *   Scanfcode. (2017). Footer Template https://codepen.io/scanfcode/pen/MEZPNd 
 *   The following CSS for the footer was adapted from the Scanfcode example
 */
-.editorFooter 
-{
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    height: 170px;
-    color: #737373;
-    text-align: left;
-    font-family: Arial;
-    background-color: #333;
-    font-size: 16px;
-    text-align: left;
-}
+    .editorFooter {
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        height: 170px;
+        color: #737373;
+        text-align: left;
+        font-family: Arial;
+        background-color: #333;
+        font-size: 16px;
+        text-align: left;
+    }
 
     .editorFooter p 
     {

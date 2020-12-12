@@ -18,13 +18,13 @@ DESCRIPTION   :
     <head runat="server">
         <title>Assignment 7 Text Editor</title>
         <link rel = "stylesheet" type = "text/css" href = "./StyleSheets/SETeditor.css" />
+        <script type = "text/javascript" src = "./Scripts/SETeditor.js"></script>
 
         <!-- 
             REFERENCE: 
             FreeLogoDesign. (2020, December). FreeLogoDesign. https://editor.freelogodesign.org/?lang=en&logo=5338059b-9ff9-40b2-bcea-b694926a91f6
         -->
         <link rel = "icon" href = "./Assets/Logo2_BlackText.png" />
-    
     </head>
     <body>
         <form runat="server">
@@ -32,17 +32,26 @@ DESCRIPTION   :
                 <!-- The navigation menu -->
                 <div class="navigationBar">
                     <p class="navigationBarText">SETeditor</p>
-                    <button type="button">Save</button>
-                    <button type="button">Save As</button>
                     <button type="button">New</button>
 
                     <!-- The drop down menu for My Files -->
-                    <button type="button">Open</button>
+                    <select name="Open" id="myFiles" onchange="getFiles()">
+                        <option value="Open A File">Open A File</option>
+                        <option value="File 1">File 1</option>
+                        <option value="File 2">File 2</option>
+                        <option value="File 3" id="file3">File 3</option>
+                    </select>
+
+                    <button type="button">Save</button>
+                    <button type="button">Save As</button>
+
+                    <!-- The text to name your files before pressing "Save As" -->
+                    <asp:TextBox runat="server" ID="saveAsBox" placeholder="Enter Your File Name Here" CssClass="saveAsBox"></asp:TextBox>
                 </div>
             </div>
 
             <!-- Text Editing Area-->
-            <textarea wrap="hard" placeholder="Write text here to begin"></textarea>>
+            <asp:textbox runat="server" ID="textBox" placeholder="Write text here to begin" TextMode="Multiline" CssClass="textbox"></asp:textbox>
 
             <!-- Site footer -->
             <div class="editorFooter">
@@ -52,15 +61,15 @@ DESCRIPTION   :
                 <img class="cornerLogo" src="./Assets/CornerLogo1.png"></img>
 
                 <!-- About Section -->
-                <br>
+                <br/>
                 <h6 class="footerHeading">About</h6>
                 <p>The simpler, easier, text editor. SETeditor.</p>
-                <br>
+                <br/>
                 <p>Start writing your dream project today without the hassle of learning a new application. 
                    SETeditor is a free for use online text editor for all your text editing needs. </p>
 
-                <br>
-                <hr>
+                <br/>
+                <hr/>
                 <p class="footerCopyright">Copyright &copy; 2020 All Rights Reserved by SETeditor.</p>
             </div>
         </form>

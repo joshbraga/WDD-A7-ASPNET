@@ -13,5 +13,16 @@ namespace WDD_A7_ASPNET
         {
 
         }
+
+        public void Selection_Change(Object sender, EventArgs e)
+        {
+            textBox.Text = "Hello";
+            // Set the background color for days in the Calendar control
+            // based on the value selected by the user from the 
+            // DropDownList control.
+
+
+        }
+
     }
 }
