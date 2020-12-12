@@ -38,9 +38,6 @@ DESCRIPTION   :
                     <!-- The drop down menu for My Files -->
                     <select name="Open" id="myFiles" onchange="getFiles()" onclick="getFiles()">
                         <option value="Open A File">Open A File</option>
-                        <option value="File 1">File 1dsfgsdfgsdghdsghsdgsdfgsdfgsdfgsdfgsdfg</option>
-                        <option value="File 2">File 2</option>
-                        <option value="File 3" id="file3">File 3</option>
                     </select>
 
                     <button type="button" onclick="saveFile()">Save</button>
@@ -53,11 +50,16 @@ DESCRIPTION   :
             </div>
 
             <div>
+                <!-- Status Bar -->
+                <div class="fileNameBar">
+                    <p id="fileNameMessage" class="fileNameBarText"></p>
+                </div>
+
                 <!-- Text Editing Area-->
                 <!--<asp:textbox runat="server" ID="textBox" placeholder="Write text here to begin" TextMode="Multiline" CssClass="textbox"></asp:textbox>-->
                 <textarea id="textContentArea" class="textbox"></textarea>
-
-                <!-- Status Bar-->
+                
+                <!-- Status Bar -->
                 <div class="statusBar">
                     <p id="statusMessage" class="statusBarText"></p>
                 </div>
