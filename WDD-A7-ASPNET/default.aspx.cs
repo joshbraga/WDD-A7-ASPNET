@@ -42,5 +42,17 @@ namespace WDD_A7_ASPNET
         }
 
 
+        [WebMethod]
+        public static string SaveFile(string filename, string data)
+        {
+            string result = "File Saved";
+
+
+
+
+            return result;
+        }
+
+
     }
 }

@@ -85,6 +85,31 @@ function getFiles()
 }
 
 
+function saveFile() {
+
+    var textboxData = "";
+
+    textboxData = document.getElementById("textContentArea").value;
+
+
+    var jsonData = {filename: "test.txt", data: textboxData};
+    var jsonString = JSON.stringify(jsonData);
+
+
+    jQueryXMLHttpRequest = $.ajax({
+        type: "POST",
+        url: "default.aspx/SaveFile",
+        data: jsonString,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+
+            populateDropdown(data);
+
+        }
+    });
+
+}
 
 
 

@@ -44,7 +44,7 @@ DESCRIPTION   :
                     </select>
 
                     <button type="button">Save</button>
-                    <button type="button">Save As</button>
+                    <button type="button" onclick="saveFile()">Save As</button>
 
                     <!-- The text to name your files before pressing "Save As" -->
                     <asp:TextBox runat="server" ID="saveAsBox" placeholder="Enter Your File Name Here" CssClass="saveAsBox"></asp:TextBox>
@@ -54,7 +54,8 @@ DESCRIPTION   :
 
             <div>
                 <!-- Text Editing Area-->
-                <asp:textbox runat="server" ID="textBox" placeholder="Write text here to begin" TextMode="Multiline" CssClass="textbox"></asp:textbox>
+                <!--<asp:textbox runat="server" ID="textBox" placeholder="Write text here to begin" TextMode="Multiline" CssClass="textbox"></asp:textbox>-->
+                <textarea id="textContentArea" class="textbox"></textarea>
 
                 <!-- Status Bar-->
                 <div class="statusBar">
