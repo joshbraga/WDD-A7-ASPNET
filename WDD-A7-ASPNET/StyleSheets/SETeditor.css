@@ -9,30 +9,40 @@
 
 
 
+/* 
+*   Coloured page background
+*/
 body 
 {
     margin: 0px;
     background-color: #3b4048;
 }
 
+/* 
+*   Editable text area
+*/
 .textbox 
 {
     border: none;
     outline: none;
-    border-radius: 10px;
+    border-radius: 5px;
     font-family: Arial;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     resize: none;
-    height: 700px;
+    height: 670px;
     width: 1000px;
     font-size: 18px;
     display: block;
 }
 
-.saveAsBox {
+/* 
+*   Textbox in the navigation bar for "Save As" button
+*/
+.saveAsBox 
+{
     font-family: Arial;
     font-size: 16px;
     width: 210px;
@@ -47,10 +57,45 @@ body
     padding: 8px 0 5px 0;
 }
 
-.statusBar {
+/* 
+*   The block for the div
+*/
+.statusBar 
+{
+    border-radius: 5px;
+    margin-top: -15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1010px;
+    height: 40px;
+    background-color: #333;
+}
+
+/* 
+*   Text inside the status bar
+*/
+.statusBarText 
+{
+    padding-top: 10px;
+    text-align: center;
     font-family: Arial;
     font-size: 16px;
     color: red;
+}
+
+/* 
+*   Text inside the status bar
+*/
+.errorText 
+{
+    margin-right: 1070px;
+    margin-top: 25px;
+    float: right;
+    font-size: 16px;
+    color: red;
+    text-align: left;
+    text-decoration: none;
+    font-family: Arial;
 }
 
 /* 
@@ -69,14 +114,18 @@ body
     font-family: Arial;
 }
 
-/* The navigation menu */
+/* 
+*   Navigation menu 
+*/
 .navigationBar 
 {
     overflow: hidden;
     background-color: #333;
 }
 
-    /* Navigation links */
+    /* 
+    *   Buttons in the navigation menu 
+    */
     .navigationBar button 
     {
         float: left;
@@ -90,14 +139,27 @@ body
         outline: none;
     }
 
-        /* Add a red background color to navigation links on hover */
+        /* 
+        *   Turn orange on hover 
+        */
         .navigationBar button:hover 
         {
             background-color: #e78200;
         }
 
-    /* Navigation links */
-    .navigationBar select {
+        /* 
+        *   Bump on click
+        */
+        .navigationBar button:active 
+        {
+            transform: translateY(4px);
+        }
+
+    /* 
+    *   Select drop down list in navigation menu 
+    */
+    .navigationBar select 
+    {
         float: left;
         font-size: 20px;
         color: white;
@@ -109,35 +171,37 @@ body
         outline: none;
     }
 
-        /* Add a red background color to navigation links on hover */
-        .navigationBar select:hover {
+        /* 
+        *   Turn orange and bumpon click
+        */
+        .navigationBar select:active 
+        {
             background-color: #e78200;
         }
 
-    /* Navigation links */
-    .navigationBar DropDownList {
-        float: left;
-        font-size: 20px;
-        color: white;
-        text-align: center;
-        padding: 20px 16px 20px 16px;
-        text-decoration: none;
-        background-color: #333;
-        border: none;
-        outline: none;
-    }
+        /* 
+        *   Turn orange on focus
+        */
+        .navigationBar select:focus 
+        {
+            background-color: #e78200;
+        }
 
-        /* Add a red background color to navigation links on hover */
-        .navigationBar DropDownList:hover {
+        /* 
+        *   Turn orange on hover
+        */
+        .navigationBar select:hover 
+        {
             background-color: #e78200;
         }
 
     /* 
-*   REFERENCE: 
-*   Scanfcode. (2017). Footer Template https://codepen.io/scanfcode/pen/MEZPNd 
-*   The following CSS for the footer was adapted from the Scanfcode example
-*/
-    .editorFooter {
+    *   REFERENCE: 
+    *   Scanfcode. (2017). Footer Template https://codepen.io/scanfcode/pen/MEZPNd 
+    *   The following CSS for the footer was adapted from the Scanfcode example
+    */
+    .editorFooter 
+    {
         position: fixed;
         bottom: 0px;
         width: 100%;
@@ -150,12 +214,18 @@ body
         text-align: left;
     }
 
+    /* 
+    *   All paragraphs in the footer
+    */
     .editorFooter p 
     {
         margin-left: 200px;
         margin-bottom: -25px;
     }
 
+    /* 
+    *   All hr (horizontal rulers) in the footer
+    */
     .editorFooter hr 
     {
         margin-top: 35px;
@@ -166,6 +236,9 @@ body
         opacity: 0.5;
     }
 
+/* 
+*   White ABOUT header in the footer
+*/
 .footerHeading 
 {
     margin-top: 0px;
@@ -179,6 +252,9 @@ body
     letter-spacing: 2px;
 }
 
+/* 
+*   Company Logo position in the footer
+*/
 .footerLogo 
 {
     position: fixed;
@@ -187,6 +263,9 @@ body
     bottom: -10px;
 }
 
+/* 
+*   Extra image position in the bottom right in the footer
+*/
 .cornerLogo 
 {
     position: fixed;
@@ -194,3 +273,37 @@ body
     right: -65px;
     bottom: -40px;
 }
+
+/* 
+*   REFERENCE: 
+*   W3Schools. (N.D.). How TO - Custom Scrollbar https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp
+*   The following CSS for the scrollbar styling was adapted from the W# Schools example
+*/
+::-webkit-scrollbar 
+{
+    width: 10px;
+}
+
+/* 
+*   The background track of the scrollbar
+*/
+::-webkit-scrollbar-track 
+{
+    background: #b3b3b3;
+}
+
+/* 
+*   Scrollbar
+*/
+::-webkit-scrollbar-thumb 
+{
+    background: #8c8c8c;
+}
+
+    /* 
+    *   Scrollbar colour on hover
+    */
+    ::-webkit-scrollbar-thumb:hover 
+    {
+        background: #333;
+    }

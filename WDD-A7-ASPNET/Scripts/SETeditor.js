@@ -21,7 +21,7 @@
 */
 function populateDropdown(data)
 {
-    for (var i = 0; i < data.length; i ++)
+    for (var i = 0; i < data.length; i++)
     {
         addNewListOption(data.d[i]);
     }
@@ -60,8 +60,14 @@ function getFiles()
 
 }
 
+
+
+
+
+
+
 function testArray()
 {
     var filesArray = ["apple", "orange", "cherry"];
-    filesArray.forEach(addNewListOption);
+    populateDropDown(filesArray);
 }

@@ -35,7 +35,7 @@ DESCRIPTION   :
                     <button type="button">New</button>
 
                     <!-- The drop down menu for My Files -->
-                    <select name="Open" id="myFiles" onchange="getFiles()">
+                    <select name="Open" id="myFiles" onchange="testArray()">
                         <option value="Open A File">Open A File</option>
                         <option value="File 1">File 1</option>
                         <option value="File 2">File 2</option>
@@ -47,11 +47,19 @@ DESCRIPTION   :
 
                     <!-- The text to name your files before pressing "Save As" -->
                     <asp:TextBox runat="server" ID="saveAsBox" placeholder="Enter Your File Name Here" CssClass="saveAsBox"></asp:TextBox>
+                    <p id="saveAsError" class="errorText"></p>
                 </div>
             </div>
 
-            <!-- Text Editing Area-->
-            <asp:textbox runat="server" ID="textBox" placeholder="Write text here to begin" TextMode="Multiline" CssClass="textbox"></asp:textbox>
+            <div>
+                <!-- Text Editing Area-->
+                <asp:textbox runat="server" ID="textBox" placeholder="Write text here to begin" TextMode="Multiline" CssClass="textbox"></asp:textbox>
+
+                <!-- Status Bar-->
+                <div class="statusBar">
+                    <p id="statusMessage" class="statusBarText"></p>
+                </div>
+            </div>
 
             <!-- Site footer -->
             <div class="editorFooter">
