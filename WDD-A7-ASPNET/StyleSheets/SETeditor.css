@@ -21,8 +21,7 @@ body
 /* 
 *   Editable text area
 */
-.textbox 
-{
+.textbox {
     border: none;
     outline: none;
     font-family: Arial;
@@ -225,24 +224,29 @@ body
             background-color: #e78200;
         }
 
-    /* 
-    *   REFERENCE: 
-    *   Scanfcode. (2017). Footer Template https://codepen.io/scanfcode/pen/MEZPNd 
-    *   The following CSS for the footer was adapted from the Scanfcode example
-    */
-    .editorFooter 
-    {
-        position: fixed;
-        bottom: 0px;
-        width: 100%;
-        height: 170px;
-        color: #737373;
-        text-align: left;
-        font-family: Arial;
-        background-color: #333;
-        font-size: 16px;
-        text-align: left;
-    }
+.footerPadding {
+    margin-top: 20px;
+    height: 160px;
+}
+
+/* 
+*   REFERENCE: 
+*   Scanfcode. (2017). Footer Template https://codepen.io/scanfcode/pen/MEZPNd 
+*   The following CSS for the footer was adapted from the Scanfcode example
+*/
+.editorFooter 
+{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 170px;
+    color: #737373;
+    text-align: left;
+    font-family: Arial;
+    background-color: #333;
+    font-size: 16px;
+    text-align: left;
+}
 
     /* 
     *   All paragraphs in the footer
@@ -271,7 +275,7 @@ body
 */
 .footerHeading 
 {
-    margin-top: 0px;
+    margin-top: 10px;
     margin-bottom: 5px;
     margin-left: 200px;
     text-align: left;
@@ -288,7 +292,6 @@ body
 .footerLogo 
 {
     position: fixed;
-    z-index: 1;
     left: 0px;
     bottom: -10px;
 }
@@ -299,7 +302,6 @@ body
 .cornerLogo 
 {
     position: fixed;
-    z-index: 1;
     right: -65px;
     bottom: -40px;
 }

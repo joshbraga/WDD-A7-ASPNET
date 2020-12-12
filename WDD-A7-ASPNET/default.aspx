@@ -76,6 +76,8 @@ DESCRIPTION   :
                 </div>
             </div>
 
+            <div class="footerPadding"></div>
+
             <!-- Site footer -->
             <div class="editorFooter">
                 <!-- Company Logo -->
