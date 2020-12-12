@@ -84,8 +84,14 @@ function getFiles()
 
 }
 
+
+
+
+
+
+
 function testArray()
 {
     var filesArray = ["apple", "orange", "cherry"];
-    filesArray.forEach(addNewListOption);
+    populateDropDown(filesArray);
 }

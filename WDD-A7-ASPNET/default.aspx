@@ -48,11 +48,19 @@ DESCRIPTION   :
 
                     <!-- The text to name your files before pressing "Save As" -->
                     <asp:TextBox runat="server" ID="saveAsBox" placeholder="Enter Your File Name Here" CssClass="saveAsBox"></asp:TextBox>
+                    <p id="saveAsError" class="errorText"></p>
                 </div>
             </div>
 
-            <!-- Text Editing Area-->
-            <asp:textbox runat="server" ID="textBox" placeholder="Write text here to begin" TextMode="Multiline" CssClass="textbox"></asp:textbox>
+            <div>
+                <!-- Text Editing Area-->
+                <asp:textbox runat="server" ID="textBox" placeholder="Write text here to begin" TextMode="Multiline" CssClass="textbox"></asp:textbox>
+
+                <!-- Status Bar-->
+                <div class="statusBar">
+                    <p id="statusMessage" class="statusBarText"></p>
+                </div>
+            </div>
 
             <!-- Site footer -->
             <div class="editorFooter">
