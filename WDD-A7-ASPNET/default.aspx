@@ -63,8 +63,12 @@ DESCRIPTION   :
                 </div>
 
                 <!-- Text Editing Area-->
+
+                <div>
+                    <textarea id="textContentArea" class="textbox"></textarea>
+                </div>
                
-                <textarea id="textContentArea" class="textbox"></textarea>
+                
                 
                 <!-- Status Bar -->
                 <div class="statusBar">

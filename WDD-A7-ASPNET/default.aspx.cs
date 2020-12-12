@@ -57,7 +57,7 @@ namespace WDD_A7_ASPNET
             catch (Exception e)
             {
                 Logger.Log(e.ToString());
-                throw;
+                result = "error";
             }
             
             
