@@ -108,7 +108,7 @@ function validateFileName()
     }
     else
     {
-        //Call to create new file with that name
+        saveFile();
     }
 }
 
@@ -206,8 +206,6 @@ function saveFile() {
 }
 
 
-
-}
 
 function newFile() {
 

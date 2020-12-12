@@ -47,6 +47,10 @@ namespace WDD_A7_ASPNET
         {
             string result = "File Saved";
 
+            string filepath = HttpContext.Current.Server.MapPath("myFiles");
+
+            File.WriteAllText(filepath + @"\" + filename, data);
+
 
 
 
