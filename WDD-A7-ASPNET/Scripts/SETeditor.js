@@ -9,6 +9,13 @@
 
 
 
+//global
+
+
+var jQueryXMLHttpRequest; 
+
+
+
 /* 
 * FUNCTION    : getUserInput()
 * DESCRIPTION :
@@ -109,7 +116,9 @@ function validateFileName() {
 */
 function populateDropdown(data)
 {
-    for (var i = 0; i < data.length; i++)
+    document.getElementById("myFiles").innerHTML = '<option value="Open A File">Open A File</option>';
+
+    for (var i = 0; i < data.d.length; i ++)
     {
         addNewListOption(data.d[i]);
     }
@@ -146,7 +155,23 @@ function updateFileList()
 *      void : void
 */
 function getFiles()
-{
+{ 
+    var jsonData = {};
+    var jsonString = JSON.stringify(jsonData);
+
+
+    jQueryXMLHttpRequest = $.ajax({
+        type: "POST",
+        url: "default.aspx/GetFileNames",
+        data: jsonString,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+
+            populateDropdown(data);
+
+        }
+    });
 
 }
 

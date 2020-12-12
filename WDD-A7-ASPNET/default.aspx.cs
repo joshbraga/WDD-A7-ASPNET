@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
+using System.IO;
 
 namespace WDD_A7_ASPNET
 {
@@ -14,15 +16,31 @@ namespace WDD_A7_ASPNET
 
         }
 
-        public void Selection_Change(Object sender, EventArgs e)
+
+
+        [WebMethod]
+        public static List<string> GetFileNames()
         {
-            textBox.Text = "Hello";
-            // Set the background color for days in the Calendar control
-            // based on the value selected by the user from the 
-            // DropDownList control.
+            List<string> filenames = new List<string>();
 
+            string filepath = HttpContext.Current.Server.MapPath("myFiles");
 
+            string[] arrayfilenames = Directory.GetFiles(filepath);
+
+            int i = 0;
+
+            foreach (string s in arrayfilenames)
+            {
+                arrayfilenames[i] = s.Replace(filepath + @"\", "");
+                ++i;
+            }
+
+            
+            filenames.AddRange(arrayfilenames);  
+
+            return filenames;
         }
+
 
     }
 }

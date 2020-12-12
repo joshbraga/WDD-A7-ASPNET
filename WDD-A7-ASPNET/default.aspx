@@ -18,6 +18,7 @@ DESCRIPTION   :
     <head runat="server">
         <title>Assignment 7 Text Editor</title>
         <link rel = "stylesheet" type = "text/css" href = "./StyleSheets/SETeditor.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type = "text/javascript" src = "./Scripts/SETeditor.js"></script>
 
         <!-- 
@@ -35,7 +36,7 @@ DESCRIPTION   :
                     <button type="button" onclick="updateFileList">New</button>
 
                     <!-- The drop down menu for My Files -->
-                    <select name="Open" id="myFiles" onclick="getFile()">
+                    <select name="Open" id="myFiles" onchange="getFiles()" onclick="getFiles()">
                         <option value="Open A File">Open A File</option>
                         <option value="File 1">File 1dsfgsdfgsdghdsghsdgsdfgsdfgsdfgsdfgsdfg</option>
                         <option value="File 2">File 2</option>
