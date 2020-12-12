@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
 using System.IO;
+using System.Diagnostics;
 
 namespace WDD_A7_ASPNET
 {
@@ -49,12 +50,29 @@ namespace WDD_A7_ASPNET
 
             string filepath = HttpContext.Current.Server.MapPath("myFiles");
 
-            File.WriteAllText(filepath + @"\" + filename, data);
-
-
-
-
+            try
+            {
+                File.WriteAllText(filepath + @"\" + filename, data);
+            }
+            catch (Exception e)
+            {
+                
+            }
+            
+            
+            
+            
             return result;
+
+
+        }
+
+
+        public static string OpenFile(string filename)
+        {
+
+
+            return "hi";
         }
 
 

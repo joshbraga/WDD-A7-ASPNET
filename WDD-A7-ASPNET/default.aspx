@@ -38,13 +38,20 @@ DESCRIPTION   :
                     <!-- The drop down menu for My Files -->
                     <select name="Open" id="myFiles" onchange="getFiles()" onclick="getFiles()">
                         <option value="Open A File">Open A File</option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
                     </select>
 
                     <button type="button" onclick="saveFile()">Save</button>
                     <button type="button" onclick="validateFileName()">Save As</button>
 
                     <!-- The text to name your files before pressing "Save As" -->
-                    <asp:TextBox runat="server" ID="saveAsBox" placeholder="Enter Your File Name Here" CssClass="saveAsBox"></asp:TextBox>
+                    <!--<asp:TextBox runat="server" ID="saveAsBox" placeholder="Enter Your File Name Here" CssClass="saveAsBox"></asp:TextBox>-->
+                    <input type="text" id="saveAsBox" placeholder="Enter Your File Name Here" class="saveAsBox"/>
                     <p id="saveAsError" class="errorText"></p>
                 </div>
             </div>
