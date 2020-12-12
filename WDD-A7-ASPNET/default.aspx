@@ -33,18 +33,18 @@ DESCRIPTION   :
                 <!-- The navigation menu -->
                 <div class="navigationBar">
                     <p class="navigationBarText">SETeditor</p>
-                    <button type="button">New</button>
+                    <button type="button" onclick="updateFileList">New</button>
 
                     <!-- The drop down menu for My Files -->
                     <select name="Open" id="myFiles" onchange="getFiles()" onclick="getFiles()">
                         <option value="Open A File">Open A File</option>
-                        <option value="File 1">File 1</option>
+                        <option value="File 1">File 1dsfgsdfgsdghdsghsdgsdfgsdfgsdfgsdfgsdfg</option>
                         <option value="File 2">File 2</option>
                         <option value="File 3" id="file3">File 3</option>
                     </select>
 
-                    <button type="button">Save</button>
-                    <button type="button" onclick="saveFile()">Save As</button>
+                    <button type="button" onclick="saveFile()">Save</button>
+                    <button type="button" onclick="validateFileName()">Save As</button>
 
                     <!-- The text to name your files before pressing "Save As" -->
                     <asp:TextBox runat="server" ID="saveAsBox" placeholder="Enter Your File Name Here" CssClass="saveAsBox"></asp:TextBox>
