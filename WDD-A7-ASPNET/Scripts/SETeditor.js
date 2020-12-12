@@ -148,6 +148,7 @@ function addNewListOption(fileName)
 {
     var select = document.getElementById("myFiles");
     select.options[select.options.length] = new Option(fileName, fileName);
+    $("option").onclick = "openFile()";
 }
 
 /*
@@ -202,11 +203,12 @@ function saveFile()
 {
 
     var textboxData = "";
-
     textboxData = document.getElementById("textContentArea").value;
+    var saveboxData = "";
+    saveboxData = document.getElementById("saveAsBox").value;    
 
 
-    var jsonData = {filename: "test.txt", data: textboxData};
+    var jsonData = {filename: saveboxData, data: textboxData};
     var jsonString = JSON.stringify(jsonData);
 
 
@@ -218,7 +220,7 @@ function saveFile()
         dataType: "json",
         success: function (data) {
 
-            populateDropdown(data);
+            
 
         }
     });
@@ -228,19 +230,57 @@ function saveFile()
 
 function openFile() {
 
+    var fileselection = document.getElementById("myFiles");
+    var openFileData = "";
+
+    openfileData = fileselection[fileselection.selectedIndex].value;
+    
+    var jsonData = { filename: openfileData};
+    var jsonString = JSON.stringify(jsonData);
+
+        
 
 
+    jQueryXMLHttpRequest = $.ajax({
+        type: "POST",
+        url: "default.aspx/OpenFile",
+        data: jsonString,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        beforeSend: function () {
+            document.getElementById("statusMessage").innerHTML = "Opening file..."
+
+        },
+        success: function (data) {
+
+            if (data.d.Key == "fail") {
+
+                document.getElementById("statusMessage").innerHTML = "File does not exist";
+            }
+            else {
+                
+                document.getElementById("fileNameMessage").innerHTML = openfileData;
+                document.getElementById("statusMessage").innerHTML = "File opened";
+                document.getElementById("textContentArea").value = data.d.Value;
+            }
+
+            
+
+        },
+        fail: function () {
+            document.getElementById("statusMessage").innerHTML = "File failed to open";
+        }
+
+    });
 
 
 }
-    
-
-    
 
 
+function newFile() {
 
-
-function newFile()
-{
+    document.getElementById("fileNameMessage").innerHTML = "";
+    document.getElementById("statusMessage").innerHTML = "";
+    document.getElementById("textContentArea").value = "";
 
 }

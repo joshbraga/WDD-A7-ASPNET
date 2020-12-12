@@ -56,7 +56,8 @@ namespace WDD_A7_ASPNET
             }
             catch (Exception e)
             {
-                
+                Logger.Log(e.ToString());
+                throw;
             }
             
             
@@ -67,14 +68,27 @@ namespace WDD_A7_ASPNET
 
         }
 
-
-        public static string OpenFile(string filename)
+        [WebMethod]
+        public static KeyValuePair<string, string> OpenFile(string filename)
         {
+            KeyValuePair<string, string> returnData;
 
+            string filepath = HttpContext.Current.Server.MapPath("myFiles");
 
-            return "hi";
+            filepath = filepath + @"\" + filename;
+
+            if (File.Exists(filepath))
+            {
+                string data = File.ReadAllText(filepath);
+                returnData = new KeyValuePair<string, string>("success", data);
+            }
+            else
+            {
+                returnData = new KeyValuePair<string, string>("fail", "");
+            }
+
+            return returnData;
+
         }
-
-
     }
 }

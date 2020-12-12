@@ -77,44 +77,5 @@ namespace WDD_A7_ASPNET
             //append all text will add each entry to the end of the file + a \n
             File.AppendAllText(LoggerPath, message + Environment.NewLine);
         }
-
-
-        ///
-        /// \brief To 
-        /// \details <b>Details</b>
-        ///
-        /// This method provides a new path for the logging class via the config files 
-        /// \param path  - <b>string </b> - the filepath we are designating for the new location for the log file
-        /// 
-        /// \return boolean  - our Success code is the return statement.
-        ///
-        public static Boolean NewLoggerPath(string path)
-        {
-            Boolean success = true; 
-
-            try
-            {
-                FileStream fs = File.Create(path);
-                fs.Close();
-
-                string[] lines = File.ReadAllLines(ConfigFileName);
-
-                for (int i = 0; i < lines.Length; ++i)
-                {
-                    if (lines[i].StartsWith("LoggerFilePath"))
-                    {
-                        lines[i] = "LoggerFilePath|" + path;
-                        LoggerPath = path;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Logger.Log(e.ToString());
-                success = false;
-            }
-
-            return success;
-        }
     }
 }

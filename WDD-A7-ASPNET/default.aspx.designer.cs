@@ -13,23 +13,5 @@ namespace WDD_A7_ASPNET
 
     public partial class _default
     {
-
-        /// <summary>
-        /// saveAsBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox saveAsBox;
-
-        /// <summary>
-        /// textBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textBox;
     }
 }
