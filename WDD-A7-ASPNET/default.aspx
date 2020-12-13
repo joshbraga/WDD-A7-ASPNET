@@ -9,7 +9,8 @@ PROJECT       : WDD-A7-ASPNET
 PROGRAMMER    : Balazs Karner 8646201 & Josh Braga 5895818
 FIRST VERSION : 12/10/2020
 DESCRIPTION   : 
-    The purpose of this file is to 
+    The purpose of this file is to create very simple text editor with similar functionality to notepad
+    using ajax calls on a webpage.
 -->
 
 
@@ -63,7 +64,6 @@ DESCRIPTION   :
                 </div>
 
                 <!-- Text Editing Area-->
-
                 <div>
                     <textarea id="textContentArea" class="textbox" onclick="clearSaveAsError()"></textarea>
                 </div>

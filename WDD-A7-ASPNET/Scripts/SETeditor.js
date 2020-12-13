@@ -4,7 +4,8 @@
 * PROGRAMMER       : Josh Braga 5895818 and Balazs Karner 8646201
 * FIRST VERSION    : 2020-12-10
 * DESCRIPTION      : 
-*        The purpose of this file is to have a collection of JavaScript files
+*        The purpose of this file is to have a collection of JavaScript functions
+*       
 */
 
 
@@ -246,13 +247,13 @@ function getFiles() {
     var jsonString = JSON.stringify(jsonData);
 
 
-    //ajax call to SaveFile webmethod sending and receiving json
+    //ajax call to GetFiles webmethod sending and receiving json
     jQueryXMLHttpRequest = $.ajax({
         type: "POST",
         url: "default.aspx/GetFileNames",
         data: jsonString,
         contentType: "application/json; charset=utf-8",
-        dataType: "json",
+        dataType: "json",        
         success: function (data) {
             if (data.d == "") {
                 document.getElementById("statusMessage").innerHTML = "Could not find files";
@@ -260,7 +261,9 @@ function getFiles() {
 
             //On success, calls function to repopulate the select drop down box with updated directory list
             populateDropdown(data);
-
+        },
+        fail: function (data) {
+            document.getElementById("statusMessage").innerHTML = "File load error";
         }
     });
 
@@ -366,10 +369,10 @@ function saveFile(saveAsFlag) {
                 document.getElementById("statusMessage").innerHTML = "Saving file...";
             },
             success: function (data) {
+                getFiles(); 
                 document.getElementById("fileNameMessage").innerHTML = filetosave;                
                 document.getElementById("saveAsBox").value = "";
-                //repopulate list on save to add new file to list
-                getFiles(); 
+                //repopulate list on save to add new file to list                
                 document.getElementById("statusMessage").innerHTML = "File Saved";
             },
             fail: function () {
