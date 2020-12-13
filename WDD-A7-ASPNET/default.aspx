@@ -35,8 +35,8 @@ DESCRIPTION   :
                     <p class="navigationBarText">SETeditor</p>
                     <button id="newButton" type="button" onclick="newFile()">New</button>
 
-                    <!-- The drop down menu for My Files -->
-                    <select name="Open" id="myFiles" onchange="openFile()" onclick="getFiles()">
+                    <!-- The drop down menu for My Files    onclick="getFiles()" -->
+                    <select name="Open" id="myFiles" onchange="openFile()">
                         <option value="Open A File">Open A File</option>
                         <option></option>
                         <option></option>
@@ -46,8 +46,8 @@ DESCRIPTION   :
                         <option></option>
                     </select>
 
-                    <button type="button" onclick="saveFile()">Save</button>
-                    <button type="button" onclick="saveFile()">Save As</button>
+                    <button type="button" onclick="saveExistingFile()">Save</button>
+                    <button type="button" onclick="saveFileAs()">Save As</button>
 
                     <!-- The text to name your files before pressing "Save As" -->
                     
@@ -65,7 +65,7 @@ DESCRIPTION   :
                 <!-- Text Editing Area-->
 
                 <div>
-                    <textarea id="textContentArea" class="textbox"></textarea>
+                    <textarea id="textContentArea" class="textbox" onclick="clearSaveAsError()"></textarea>
                 </div>
                
                 

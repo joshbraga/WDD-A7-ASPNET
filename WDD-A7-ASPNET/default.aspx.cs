@@ -25,8 +25,19 @@ namespace WDD_A7_ASPNET
             List<string> filenames = new List<string>();
 
             string filepath = HttpContext.Current.Server.MapPath("myFiles");
+            string[] arrayfilenames;
 
-            string[] arrayfilenames = Directory.GetFiles(filepath);
+            try
+            {
+                arrayfilenames = Directory.GetFiles(filepath);
+            }
+            catch (Exception e)
+            {
+                List<string> empty = new List<string>();
+                empty.Add("");
+                Logger.Log(e.ToString());
+                return empty;
+            }
 
             int i = 0;
 
@@ -61,35 +72,39 @@ namespace WDD_A7_ASPNET
                 result = "error";
             }
             
-            
-            
-            
             return result;
 
 
         }
 
         [WebMethod]
-        public static KeyValuePair<string, string> OpenFile(string filename)
+        public static new KeyValuePair<string, string> OpenFile(string filename)
         {
             KeyValuePair<string, string> returnData;
+            string filepath;
 
-            string filepath = HttpContext.Current.Server.MapPath("myFiles");
-
-            filepath = filepath + @"\" + filename;
-
-            if (File.Exists(filepath))
+            try
             {
-                string data = File.ReadAllText(filepath);
-                returnData = new KeyValuePair<string, string>("success", data);
+                filepath = HttpContext.Current.Server.MapPath("myFiles");
+                filepath = filepath + @"\" + filename;
+
+                if (File.Exists(filepath))
+                {
+                    string data = File.ReadAllText(filepath);
+                    returnData = new KeyValuePair<string, string>("success", data);
+                }
+                else
+                {
+                    returnData = new KeyValuePair<string, string>("fail", "");
+                }
             }
-            else
+            catch (Exception e)
             {
+                Logger.Log(e.ToString());
                 returnData = new KeyValuePair<string, string>("fail", "");
             }
 
             return returnData;
-
         }
     }
 }

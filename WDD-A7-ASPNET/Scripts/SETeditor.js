@@ -15,9 +15,23 @@ var jQueryXMLHttpRequest;
 
 $(document).ready(function ()
 { 
+    getFiles();
+
 
 });
 
+
+
+
+/*
+* FUNCTION    : newFile()
+* DESCRIPTION :
+*       This function clears all data from the editor to make it ready for a fresh file
+* PARAMETERS  :
+*      Nothing.
+* RETURNS     :
+*      Nothing.
+*/
 function newFile() {
 
     document.getElementById("fileNameMessage").innerHTML = "";
@@ -26,6 +40,9 @@ function newFile() {
     document.getElementById("saveAsBox").value = "";
 
 }
+
+
+
 
 /* 
 * FUNCTION    : getUserInput()
@@ -43,6 +60,9 @@ function getUserInput(elementId)
     var userInput = elementId.value.toString();
     return userInput;
 }
+
+
+
 
 /* 
 * FUNCTION    : checkIfEmpty()
@@ -69,6 +89,9 @@ function checkIfEmpty(userInput)
     }
 }
 
+
+
+
 /* 
 * FUNCTION    : validateNameFormat()
 * DESCRIPTION :
@@ -87,6 +110,9 @@ function validateNameFormat(userInput)
     var hasMatch = namePattern.test(userInput);
     return hasMatch;
 }
+
+
+
 
 /* 
 * FUNCTION    : validateFileName()
@@ -129,6 +155,9 @@ function validateFileName(data)
 
 }
 
+
+
+
 /*
 * FUNCTION    : populateDropdown()
 * DESCRIPTION :
@@ -149,6 +178,9 @@ function populateDropdown(data)
     }
 }
 
+
+
+
 /*
 * FUNCTION    : addNewListOption()
 * DESCRIPTION :
@@ -165,6 +197,9 @@ function addNewListOption(fileName)
     select.options[select.options.length] = new Option(fileName, fileName);
 }
 
+
+
+
 /*
 * FUNCTION    : setFileNameBar()
 * DESCRIPTION :
@@ -180,6 +215,9 @@ function setFileNameBar(fileName)
     document.getElementById("fileNameMessage").innerHTML = "File Name: " + fileName;
 }
 
+
+
+
 /*
 * FUNCTION    : getFiles()
 * DESCRIPTION :
@@ -193,6 +231,7 @@ function setFileNameBar(fileName)
 */
 function getFiles()
 { 
+    clearSaveAsError();
     clearStatus();
     var jsonData = {};
     var jsonString = JSON.stringify(jsonData);
@@ -205,6 +244,9 @@ function getFiles()
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
+            if (data.d == "") {
+                document.getElementById("statusMessage").innerHTML = "Could not find files";
+            }
 
             populateDropdown(data);
 
@@ -213,18 +255,36 @@ function getFiles()
 
 }
 
+function saveFileAs() {
+    saveFile(true);
+}
 
-function saveFile()
+function saveExistingFile() {
+    saveFile(false);
+}
+
+
+/*
+* FUNCTION    : saveFile()
+* DESCRIPTION :
+*       This function initiates file save. It does a save as function if parameter is false
+ *       and Save As if the parameter is true.
+* PARAMETERS  :
+*      saveAsFlag   :   contains whether to use the Save As or regular save functionality
+* RETURNS     :
+*      Nothing.
+*/
+function saveFile(saveAsFlag)
 {
+    clearSaveAsError(); 
     clearStatus();
     var filenameData = "";
     var saveFlag = false;
 
+
     if (document.getElementById("fileNameMessage").innerHTML != null) {
         filenameData = document.getElementById("fileNameMessage").innerHTML
     }
-
-    
 
     var textboxData = "";
     textboxData = document.getElementById("textContentArea").value;
@@ -233,7 +293,7 @@ function saveFile()
 
     var filetosave = "";
 
-    if (filenameData == "" || filenameData == null) {
+    if (filenameData == "" || filenameData == null || saveAsFlag == true ) {
 
         if (validateFileName(saveboxData) == true) {
             filetosave = saveboxData;
@@ -269,6 +329,7 @@ function saveFile()
                 document.getElementById("fileNameMessage").innerHTML = filetosave;
                 document.getElementById("statusMessage").innerHTML = "File Saved";
                 document.getElementById("saveAsBox").value = "";
+                getFiles();
             },
             fail: function () {
                 document.getElementById("statusMessage").innerHTML = "Error saving file";
@@ -280,8 +341,21 @@ function saveFile()
 }
 
 
+
+
+/*
+* FUNCTION    : openFile()
+* DESCRIPTION :
+*       This function opens a file from the system. It uses an ajax call to access the code
+ *       behind webmethod OpenFile to do the file IO and return the data.
+* PARAMETERS  :
+*      Nothing.
+* RETURNS     :
+*      Nothing.
+*/
 function openFile() {
 
+    clearSaveAsError(); 
     clearStatus();
     var fileselection = document.getElementById("myFiles");
     var openFileData = "";
@@ -330,8 +404,35 @@ function openFile() {
 }    
 
 
+
+
+/*
+* FUNCTION    : clearStatus()
+* DESCRIPTION :
+*       Clears the status text for the bottom status bar.
+* PARAMETERS  :
+*      Nothing.
+* RETURNS     :
+*      Nothing.
+*/
 function clearStatus() {
     document.getElementById("statusMessage").innerHTML = "";
-    }
+}
+
+
+
+
+/*
+* FUNCTION    : clearSaveAs()
+* DESCRIPTION :
+*       Clears the Save As error text.
+* PARAMETERS  :
+*      Nothing.
+* RETURNS     :
+*      Nothing.
+*/
+function clearSaveAsError() {
+    document.getElementById("saveAsError").innerHTML = "";
+}
 
 
