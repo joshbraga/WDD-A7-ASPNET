@@ -5,6 +5,8 @@
 * FIRST VERSION    : 2020-12-10
 * DESCRIPTION      : 
 *        The purpose of this file is to have a collection of JavaScript functions
+*        Requires use of a directory named MyFiles in the same directory as the
+*        aspx.
 *       
 */
 
@@ -12,6 +14,7 @@
 
 //global
 var jQueryXMLHttpRequest; 
+//folder for the files
 const directoryPath = "MyFiles";
 
 

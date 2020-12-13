@@ -10,7 +10,8 @@ PROGRAMMER    : Balazs Karner 8646201 & Josh Braga 5895818
 FIRST VERSION : 12/10/2020
 DESCRIPTION   : 
     The purpose of this file is to create very simple text editor with similar functionality to notepad
-    using ajax calls on a webpage.
+    using ajax calls on a webpage. Requires use of a directory named MyFiles in the same directory as the
+    aspx.
 -->
 
 
