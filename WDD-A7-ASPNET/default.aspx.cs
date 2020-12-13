@@ -1,4 +1,21 @@
-﻿using System;
+﻿/*
+ *  FILE            :   default.aspx.cs
+ *  PROJECT         :   WDD-A7-ASPNET
+ *  PROGRAMMER      :   Josh Braga 5895818 and Balazs Karner 8646201
+ *  FIRST VERSION   :   2020-12-10
+ */
+
+/*
+ *  NAME            :   _default
+ *  PURPOSE         :   Contains the code behind for the default.aspx file. This
+ *                      class contains functionality for the File IO of the editor
+ *                      to save files, open files and get a list of files from the
+ *                      directory.
+ */
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
