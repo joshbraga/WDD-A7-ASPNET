@@ -19,6 +19,17 @@ namespace WDD_A7_ASPNET
 
 
 
+        // METHOD           :   GetFileNames()
+        // DESCRIPTION      :   Parses the directory to get list of files and sends
+        //                      them back to the client.
+        //
+        // PARAMETERS       :
+        //      Nothing.
+        //
+        // RETURNS          :
+        //      List<string>:   A list of filenames as a string, turned into a json object
+        //                      automatically.
+        //
         [WebMethod]
         public static List<string> GetFileNames()
         {
@@ -54,6 +65,19 @@ namespace WDD_A7_ASPNET
         }
 
 
+
+
+        // METHOD           :   SaveFile
+        // DESCRIPTION      :   Saves a file using the filename and data passed into
+        //                      the parameters.
+        //
+        // PARAMETERS       :
+        //  string filename :   contains the filename to save the file to
+        //  string data     :   contains the content of the file
+        //
+        // RETURNS          :
+        //  string          :   returns a string containing the result of the operation.
+        //
         [WebMethod]
         public static string SaveFile(string filename, string data)
         {
@@ -77,6 +101,21 @@ namespace WDD_A7_ASPNET
 
         }
 
+
+
+
+        // METHOD           :   OpenFile
+        // DESCRIPTION      :   Opens the file specified by the parameter and then sends
+        //                      the data back as a key pair containing the status and the
+        //                      data itself.
+        //
+        // PARAMETERS       :
+        //  string filename :   contains the filename to open
+        //
+        // RETURNS          :
+        //  KeyValuePair<string,string> :   contains the status as the key and the data as the
+        //                                  value.
+        //
         [WebMethod]
         public static new KeyValuePair<string, string> OpenFile(string filename)
         {

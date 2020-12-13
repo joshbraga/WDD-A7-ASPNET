@@ -13,10 +13,12 @@
 var jQueryXMLHttpRequest; 
 
 
+
+//jquery activate only when ready
+//does the intial call to get the file list on document ready
 $(document).ready(function ()
 { 
-    getFiles();
-
+    getFiles();   
 
 });
 
@@ -255,10 +257,34 @@ function getFiles()
 
 }
 
+
+
+
+/*
+* FUNCTION    : saveFileAs()
+* DESCRIPTION :
+*       This function calls the save function with a parameter set for saving a new file
+* PARAMETERS  :
+*      Nothing.
+* RETURNS     :
+*      Nothing.
+*/
 function saveFileAs() {
     saveFile(true);
 }
 
+
+
+
+/*
+* FUNCTION    : saveExistingFile()
+* DESCRIPTION :
+*       This function calls the save function with a parameter set for saving existing files
+* PARAMETERS  :
+*      Nothing.
+* RETURNS     :
+*      Nothing.
+*/
 function saveExistingFile() {
     saveFile(false);
 }
@@ -389,6 +415,7 @@ function openFile() {
                 document.getElementById("fileNameMessage").innerHTML = openfileData;
                 document.getElementById("statusMessage").innerHTML = "File opened";
                 document.getElementById("textContentArea").value = data.d.Value;
+                getFiles();
             }
 
             
