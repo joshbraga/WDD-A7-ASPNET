@@ -35,7 +35,7 @@ $(document).ready(function ()
 *      Nothing.
 */
 function newFile() {
-
+    //Clears all status messages and the center text area for a new file
     document.getElementById("fileNameMessage").innerHTML = "";
     document.getElementById("statusMessage").innerHTML = "";
     document.getElementById("textContentArea").value = "";
@@ -108,6 +108,7 @@ function checkIfEmpty(userInput)
 */
 function validateNameFormat(userInput)
 {
+    //Checks if the user entered filename has any special characters for a file name ()?></":*)
     var namePattern = /^[a-zA-Z0-9\s\!\@\#\$\%\^\&\(\)\-\_\+\=\'\;\`\~\.\,\[\]\{\}]+$/i;
     var hasMatch = namePattern.test(userInput);
     return hasMatch;
@@ -172,8 +173,10 @@ function validateFileName(data)
 */
 function populateDropdown(data)
 {
+    //Add the first option as a palceholder for the dropdown menu
     document.getElementById("myFiles").innerHTML = '<option value="Open A File">Open A File</option>';
 
+    //Iterate over the array and add each option to the select box by calling a function
     for (var i = 0; i < data.d.length; i ++)
     {
         addNewListOption(data.d[i]);
@@ -238,7 +241,7 @@ function getFiles()
     var jsonData = {};
     var jsonString = JSON.stringify(jsonData);
 
-
+    //Gets a list of file names in the directory MyFiles
     jQueryXMLHttpRequest = $.ajax({
         type: "POST",
         url: "default.aspx/GetFileNames",
@@ -250,6 +253,7 @@ function getFiles()
                 document.getElementById("statusMessage").innerHTML = "Could not find files";
             }
 
+            //On success, calls function to repopulate the select drop down box with updated directory list
             populateDropdown(data);
 
         }
