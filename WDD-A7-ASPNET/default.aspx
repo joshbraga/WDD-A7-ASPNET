@@ -33,7 +33,7 @@ DESCRIPTION   :
                 <!-- The navigation menu -->
                 <div class="navigationBar">
                     <p class="navigationBarText">SETeditor</p>
-                    <button type="button" onclick="newFile()">New</button>
+                    <button id="newButton" type="button" onclick="newFile()">New</button>
 
                     <!-- The drop down menu for My Files -->
                     <select name="Open" id="myFiles" onchange="openFile()" onclick="getFiles()">
@@ -47,7 +47,7 @@ DESCRIPTION   :
                     </select>
 
                     <button type="button" onclick="saveFile()">Save</button>
-                    <button type="button" onclick="validateFileName()">Save As</button>
+                    <button type="button" onclick="saveFile()">Save As</button>
 
                     <!-- The text to name your files before pressing "Save As" -->
                     

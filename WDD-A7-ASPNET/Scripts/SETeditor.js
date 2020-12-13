@@ -13,6 +13,19 @@
 var jQueryXMLHttpRequest; 
 
 
+$(document).ready(function ()
+{ 
+
+});
+
+function newFile() {
+
+    document.getElementById("fileNameMessage").innerHTML = "";
+    document.getElementById("statusMessage").innerHTML = "";
+    document.getElementById("textContentArea").value = "";
+    document.getElementById("saveAsBox").value = "";
+
+}
 
 /* 
 * FUNCTION    : getUserInput()
@@ -78,21 +91,22 @@ function validateNameFormat(userInput)
 /* 
 * FUNCTION    : validateFileName()
 * DESCRIPTION :
-*       This function will validate the file name in the save as text box before proceeding
+*       This function will validate the file name passed in
 * PARAMETERS  :
-*      void : void
+*      string data     :   contains filename to validate
 * RETURNS     : 
-*      void : void
+*      Boolean  :      :   returns true if valid name valid, false otherwise
 * REFERENCE  :
-*       This function was taken directly from my (Balazs Karner), assignment 2 in WDD.
+*       This function was adapted from my (Balazs Karner), assignment 2 in WDD.
 */
-function validateFileName()
+function validateFileName(data)
 {
+    var valid = true;
     //Clear Error text
     document.getElementById("saveAsError").innerHTML = "";
 
     //Get the input saveAsBox, convert it to a string and check for valid format
-    var input = getUserInput(document.getElementById("saveAsBox"));
+    var input = data
     var isEmpty = checkIfEmpty(input);
     var isNameValid = validateNameFormat(input);
 
@@ -101,17 +115,18 @@ function validateFileName()
     {
         document.getElementById("saveAsBox").value = "";
         document.getElementById("saveAsError").innerHTML = "<b>Error:</b> File Name Cannot be Blank.";
+        valid = false;
     }
     //Otherwise enter here and check if the user's name is valid format
     else if (isNameValid == false)
     {
         document.getElementById("saveAsBox").value = "";
         document.getElementById("saveAsError").innerHTML = '<b>Error:</b> Invalid File Name. File Name Cannot Contain Special Characters [<>:"/\|?*].';
+        valid = false;
     }
-    else
-    {
-        saveFile();
-    }
+
+    return valid;
+
 }
 
 /*
@@ -148,7 +163,6 @@ function addNewListOption(fileName)
 {
     var select = document.getElementById("myFiles");
     select.options[select.options.length] = new Option(fileName, fileName);
-    $("option").onclick = "openFile()";
 }
 
 /*
@@ -179,6 +193,7 @@ function setFileNameBar(fileName)
 */
 function getFiles()
 { 
+    clearStatus();
     var jsonData = {};
     var jsonString = JSON.stringify(jsonData);
 
@@ -201,35 +216,73 @@ function getFiles()
 
 function saveFile()
 {
+    clearStatus();
+    var filenameData = "";
+    var saveFlag = false;
+
+    if (document.getElementById("fileNameMessage").innerHTML != null) {
+        filenameData = document.getElementById("fileNameMessage").innerHTML
+    }
+
+    
 
     var textboxData = "";
     textboxData = document.getElementById("textContentArea").value;
     var saveboxData = "";
-    saveboxData = document.getElementById("saveAsBox").value;    
+    saveboxData = document.getElementById("saveAsBox").value;
 
+    var filetosave = "";
 
-    var jsonData = {filename: saveboxData, data: textboxData};
-    var jsonString = JSON.stringify(jsonData);
+    if (filenameData == "" || filenameData == null) {
 
-
-    jQueryXMLHttpRequest = $.ajax({
-        type: "POST",
-        url: "default.aspx/SaveFile",
-        data: jsonString,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-
-            
-
+        if (validateFileName(saveboxData) == true) {
+            filetosave = saveboxData;
+            saveFlag = true;
         }
-    });
+    }
+
+    else {
+        if (validateFileName(filenameData) == true) {
+            filetosave = filenameData;
+            saveFlag = true;
+        }
+        
+    }
+
+
+    if (saveFlag == true) {
+
+        var jsonData = { filename: filetosave, data: textboxData };
+        var jsonString = JSON.stringify(jsonData);
+
+
+        jQueryXMLHttpRequest = $.ajax({
+            type: "POST",
+            url: "default.aspx/SaveFile",
+            data: jsonString,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            beforeSend: function () {
+                document.getElementById("statusMessage").innerHTML = "Saving file...";
+            },
+            success: function (data) {
+                document.getElementById("fileNameMessage").innerHTML = filetosave;
+                document.getElementById("statusMessage").innerHTML = "File Saved";
+                document.getElementById("saveAsBox").value = "";
+            },
+            fail: function () {
+                document.getElementById("statusMessage").innerHTML = "Error saving file";
+            }
+        });
+
+    }
 
 }
 
 
 function openFile() {
 
+    clearStatus();
     var fileselection = document.getElementById("myFiles");
     var openFileData = "";
 
@@ -274,13 +327,11 @@ function openFile() {
     });
 
 
-}
+}    
 
 
-function newFile() {
-
-    document.getElementById("fileNameMessage").innerHTML = "";
+function clearStatus() {
     document.getElementById("statusMessage").innerHTML = "";
-    document.getElementById("textContentArea").value = "";
+    }
 
-}
+
