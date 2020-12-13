@@ -18,7 +18,7 @@ var jQueryXMLHttpRequest;
 //does the intial call to get the file list on document ready
 $(document).ready(function ()
 { 
-    getFiles();   
+    getFiles();
 
 });
 
