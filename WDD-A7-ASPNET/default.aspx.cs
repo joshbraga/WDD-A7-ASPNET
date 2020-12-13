@@ -48,11 +48,12 @@ namespace WDD_A7_ASPNET
         //                      automatically.
         //
         [WebMethod]
-        public static List<string> GetFileNames()
+        public static List<string> GetFileNames(string directory)
         {
             List<string> filenames = new List<string>();
 
-            string filepath = HttpContext.Current.Server.MapPath("myFiles");
+            //get relative path of the aspx file
+            string filepath = HttpContext.Current.Server.MapPath(directory);
             string[] arrayfilenames;
 
             try
@@ -100,7 +101,7 @@ namespace WDD_A7_ASPNET
         {
             string result = "File Saved";           
 
-
+            //get relative path of the aspx
             string filepath = HttpContext.Current.Server.MapPath("myFiles");
 
             try
@@ -110,6 +111,7 @@ namespace WDD_A7_ASPNET
             catch (Exception e)
             {
                 Logger.Log(e.ToString());
+                //return error
                 result = "error";
             }
             
@@ -141,6 +143,7 @@ namespace WDD_A7_ASPNET
 
             try
             {
+                //relative path of aspx
                 filepath = HttpContext.Current.Server.MapPath("myFiles");
                 filepath = filepath + @"\" + filename;
 

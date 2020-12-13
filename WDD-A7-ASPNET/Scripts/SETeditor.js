@@ -11,6 +11,7 @@
 
 //global
 var jQueryXMLHttpRequest; 
+const directoryPath = "MyFiles";
 
 
 
@@ -231,14 +232,18 @@ function setFileNameBar(fileName)
 * RETURNS     :
 *      void : void
 */
-function getFiles()
-{ 
+function getFiles() { 
+
+    //clearing up error messages
     clearSaveAsError();
     clearStatus();
-    var jsonData = {};
+
+    //build the json
+    var jsonData = {directory: directoryPath};
     var jsonString = JSON.stringify(jsonData);
 
 
+    //ajax call to SaveFile webmethod sending and receiving json
     jQueryXMLHttpRequest = $.ajax({
         type: "POST",
         url: "default.aspx/GetFileNames",
@@ -302,10 +307,12 @@ function saveExistingFile() {
 * RETURNS     :
 *      Nothing.
 */
-function saveFile(saveAsFlag)
-{
+function saveFile(saveAsFlag) {
+
+    //clearing up error messages
     clearSaveAsError(); 
     clearStatus();
+
     var filenameData = "";
     var saveFlag = false;
 
@@ -321,6 +328,7 @@ function saveFile(saveAsFlag)
 
     var filetosave = "";
 
+    //checking whether to treat this call as Save Existing or Save As
     if (filenameData == "" || filenameData == null || saveAsFlag == true ) {
 
         if (validateFileName(saveboxData) == true) {
@@ -328,7 +336,6 @@ function saveFile(saveAsFlag)
             saveFlag = true;
         }
     }
-
     else {
         if (validateFileName(filenameData) == true) {
             filetosave = filenameData;
@@ -340,10 +347,11 @@ function saveFile(saveAsFlag)
 
     if (saveFlag == true) {
 
+        //build the json
         var jsonData = { filename: filetosave, data: textboxData };
         var jsonString = JSON.stringify(jsonData);
 
-
+        //ajax call to SaveFile webmethod sending and receiving json
         jQueryXMLHttpRequest = $.ajax({
             type: "POST",
             url: "default.aspx/SaveFile",
@@ -356,7 +364,8 @@ function saveFile(saveAsFlag)
             success: function (data) {
                 document.getElementById("fileNameMessage").innerHTML = filetosave;                
                 document.getElementById("saveAsBox").value = "";
-                getFiles();
+                //repopulate list on save to add new file to list
+                getFiles(); 
                 document.getElementById("statusMessage").innerHTML = "File Saved";
             },
             fail: function () {
@@ -383,19 +392,22 @@ function saveFile(saveAsFlag)
 */
 function openFile() {
 
+    //clearing up error messages
     clearSaveAsError(); 
     clearStatus();
     var fileselection = document.getElementById("myFiles");
     var openFileData = "";
 
+    //get the selected file in the list box
     openfileData = fileselection[fileselection.selectedIndex].value;
-    
+
+    //build the json
     var jsonData = { filename: openfileData};
     var jsonString = JSON.stringify(jsonData);
 
         
 
-    //ajax call to OpenFile webmethod behind
+    //ajax call to OpenFile webmethod sending and receiving json
     jQueryXMLHttpRequest = $.ajax({
         type: "POST",
         url: "default.aspx/OpenFile",
@@ -416,6 +428,7 @@ function openFile() {
                 
                 document.getElementById("fileNameMessage").innerHTML = openfileData;                
                 document.getElementById("textContentArea").value = data.d.Value;
+                //repopulate list on save to add new file to list
                 getFiles();
                 document.getElementById("statusMessage").innerHTML = "File opened";
             }
