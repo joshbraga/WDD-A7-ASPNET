@@ -354,10 +354,10 @@ function saveFile(saveAsFlag)
                 document.getElementById("statusMessage").innerHTML = "Saving file...";
             },
             success: function (data) {
-                document.getElementById("fileNameMessage").innerHTML = filetosave;
-                document.getElementById("statusMessage").innerHTML = "File Saved";
+                document.getElementById("fileNameMessage").innerHTML = filetosave;                
                 document.getElementById("saveAsBox").value = "";
                 getFiles();
+                document.getElementById("statusMessage").innerHTML = "File Saved";
             },
             fail: function () {
                 document.getElementById("statusMessage").innerHTML = "Error saving file";
@@ -395,7 +395,7 @@ function openFile() {
 
         
 
-
+    //ajax call to OpenFile webmethod behind
     jQueryXMLHttpRequest = $.ajax({
         type: "POST",
         url: "default.aspx/OpenFile",
@@ -414,10 +414,10 @@ function openFile() {
             }
             else {
                 
-                document.getElementById("fileNameMessage").innerHTML = openfileData;
-                document.getElementById("statusMessage").innerHTML = "File opened";
+                document.getElementById("fileNameMessage").innerHTML = openfileData;                
                 document.getElementById("textContentArea").value = data.d.Value;
                 getFiles();
+                document.getElementById("statusMessage").innerHTML = "File opened";
             }
 
             
